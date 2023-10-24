@@ -7,7 +7,8 @@ const session = require('express-session');
 const nunjucks = require('nunjucks');
 const rfs = require('rotating-file-stream');
 const dotenv = require('dotenv');
-const { toUSVString } = require('util');
+const {sequelize} = require('./models');
+
 
 dotenv.config();
 
@@ -22,6 +23,13 @@ var accessLogStream = rfs.createStream('access.log', {
 app.set('port', process.env.PORT || 3000);
 app.set('view engine', 'html');
 nunjucks.configure('views', {express:app, watch:true});
+sequelize.sync({ force: false})
+.then(() => {
+    console.log('데이터베이스 연결 성공');
+})
+.catch((err)=> {
+    console.error(err);
+});
 
 
 //에러만 콘솔에 출력
