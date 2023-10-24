@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<div class="form-container">
+    <form id="login-form" action="/auth/login" method="post">
+        <h1 class="login-h1">Login</h1>
+        <span class="login-span">Registeration by email ,password</span>
+        <div class="input-group">
+            <label for="login-email">이메일</label>
+            <input id="login-email" type="email" name="email" required>
+        </div>
+        <div class="input-group">
+            <label for="login-password">비밀번호</label>
+            <input id="login-password" type="password" name="password" required>
+        </div>
+        <button id="join-btn" type="submit" class="login-btn">회원가입</button>
+    </form>
+</div>
+
+
+{% endblock %}
+
+{% block script %}
+<script>
+    window.onload =() => {
+        if(new URL(location.href).searchParams.get('error')) {
+            alert('이미 존재하는 이메일 입니다.');
+        }
+    };
+</script>
+{% endblock %}

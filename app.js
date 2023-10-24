@@ -7,13 +7,19 @@ const session = require('express-session');
 const nunjucks = require('nunjucks');
 const rfs = require('rotating-file-stream');
 const dotenv = require('dotenv');
+const passport = require('passport');
+
 const {sequelize} = require('./models');
+const passportConfig = require('./passport');
 
 
 dotenv.config();
 
 const app = express();
+passportConfig();
+
 const pageRouter = require('./routes/page');
+
 
 var accessLogStream = rfs.createStream('access.log', {
     interval: '1d', //하루마다 rotate
@@ -55,6 +61,10 @@ app.use(session({
         secure:false,
     },
 }));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 app.use('/',pageRouter);
 
