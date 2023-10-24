@@ -7,4 +7,10 @@ nodejs twitter clone and execute service
 
 ### 현재 진행 내역
 
-    현재 데이터베이스 연결까지 (user, post)  로그인 구현(passport , kakao-passport) 구현 중
+    현재 데이터베이스 연결까지 (user, post)  로그인 구현(passport , kakao-passport) 
+    
+    (controller/auth/ join, login, logout) , model/user, passport/localstrategy. route/auth
+
+    localstrategy 완료 
+
+    kakao 진행
