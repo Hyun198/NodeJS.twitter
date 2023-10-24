@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+    {% if user and user.id %}
+    <header class = "header">
+        <div class="container">
+            <a href="/" class="navbar-brand">Twitter</a>
+        </div>
+        <div class="navbar-nav">
+            <a href="/">Home</a>
+            <a href="/profile">profile</a>
+            <a href="/logout">Logout</a>
+        </div>
+        <div class="banner">
+            <div class="container">
+                <h1 class ="banner-title"><span>#Twitter</span></h1>
+                <h2>안녕하세요</h2>
+                <h2>{{user.nick}}님!</h2>
+            </div>
+        </div>
+    </header>
+
+
+    {% else %}
+    <header class = "header">
+        <div class="container">
+            <a href="/" class="navbar-brand">Twitter</a>
+        </div>
+        <div class="navbar-nav">
+            <a href="/">Home</a>
+            <a href="/login">Login</a>
+            <a href="/join">Join</a>
+        </div>
+
+        <div class="banner">
+            <div class="container">
+                <h1 class ="banner-title"><span>#Twitter</span></h1>
+                <h2>안녕하세요</h2>
+                <h2>회원 가입을 진행해주세요!</h2>
+            </div>
+        </div>
+    </header>
+    {% endif %}
+
+    <footer>
+        Made by&nbsp;
+        <a href="https://github.com/Hyun198" target="_blank">Hyun</a>
+    </footer>
+    {% block content %}
+    {% endblock %}
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script>
+        window.onload=() => {
+            if( new URL(location.href).searchParams.get('error')) {
+                alert(new URL(location.href).searchParams.get('error'));
+            }
+        };
+    </script>
+    {% block script %}
+    {% endblock %}
+</body>
+</html>
