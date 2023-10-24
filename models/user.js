@@ -3,21 +3,35 @@ const Sequelize = require('sequelize');
 class User extends Sequelize.Model{
     static initiate(sequelize){
         User.init({
-            email: {
+            email:{
                 type: Sequelize.STRING(40),
-                allowNull: false,
-                unique: true,
+                allowNull:false,
+                unique:true,
             },
-            nick: {
+            nick:{
                 type: Sequelize.STRING(15),
                 allowNull:false,
+                
             },
-            password: {
+            password:{
                 type: Sequelize.STRING(100),
-                allowNull: false,
-            }
+                allowNull:false,
+                
+            },
+        },
+            {
+                sequelize,
+                timestamps: true,
+                underscored:false,
+                modelName: 'User',
+                tableName: 'users',
+                paranoid: true,
+                charset: 'utf8',
+                collate: 'utf8_general_ci',
+            
         });
     }
+    static associate(db) {}
 };
 
 module.exports = User;
