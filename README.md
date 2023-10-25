@@ -17,5 +17,5 @@ nodejs twitter clone and execute service
 
     localstrategy 완료 
 
-    kakao 진행
+    kakao 로그인 완료 --> kakao api에서 로그아웃 하는 법 구현 중
 
