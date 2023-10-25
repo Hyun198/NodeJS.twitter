@@ -3,7 +3,6 @@ const passport = require('passport');
 
 const {join, login, logout} = require('../controllers/auth');
 const {isLoggedIn , isNotLoggedIn } = require('../middlewares');
-const { restart } = require('nodemon');
 
 
 const router= express.Router();
