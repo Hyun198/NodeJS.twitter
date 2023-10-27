@@ -47,17 +47,14 @@ exports.logout =(req,res)=>{
     });
 };
 
-exports.update = async (req, res, next) => {
+exports.update_profile = async (req, res, next) => {
     const {email, nick, password} = req.body;
     const userId = req.user.id;
-
     try{
         const user = await User.findOne({ where: {id: userId}});
-
         if(!user){
             return res.redirect('/profile?error=notfound');
         }
-
         //수정
         user.email = email;
         user.nick = nick;
@@ -66,9 +63,7 @@ exports.update = async (req, res, next) => {
             const hash = await bcrypt.hash(password, 12);
             user.password = hash;
         }
-
         await user.save(); //수정된 정보 저장
-
         return res.redirect('/');
     }catch (err){
         console.error(err);

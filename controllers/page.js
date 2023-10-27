@@ -28,6 +28,6 @@ exports.renderJoin=(req, res)=>{
 };
 
 
-exports.renderUpdateUser =(req, res)=>{
-    res.redner('updateUser', {title: '내 정보 수정'});
+exports.renderUpdate_profile =(req, res)=>{
+    res.render('updateProfile', {title: '내 정보 수정'});
 };

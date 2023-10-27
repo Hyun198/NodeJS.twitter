@@ -1,7 +1,7 @@
 const express= require('express');
 const passport = require('passport');
 
-const {join, login, logout,kakaologout} = require('../controllers/auth');
+const {join, login, logout,kakaologout,update_profile} = require('../controllers/auth');
 const {isLoggedIn , isNotLoggedIn } = require('../middlewares');
 
 
@@ -21,7 +21,10 @@ router.get('/kakao/callback', passport.authenticate('kakao',{
     res.redirect('/');
 });
 
-router.post('/update',isLoggedIn);
+router.get('/update',isLoggedIn);
+
+router.post('/update', update_profile ,isLoggedIn)
+
 
 
 
