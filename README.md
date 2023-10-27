@@ -17,5 +17,11 @@ nodejs twitter clone and execute service
 
     localstrategy 완료 
 
+    post route 연결 완료
+
     kakao 로그인 완료 --> kakao api에서 로그아웃 하는 법 구현 중
 
+
+### 구현해야할것
+
+    실시간 채팅, 프론트,  프로필 정보 변경, 게시글 삭제, 사용자 이름 누르면 그 사용자의 게시글만 보여주기, 매번 데이터베이스 조회하지 않도록 deserializeUser 캐싱
