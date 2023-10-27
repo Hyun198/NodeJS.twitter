@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<div class="profile">
+    {% if user and user.id %}
+      <div class="user-name">{{ user.nick + '님'}}</div>
+      <input id="my-id" type="hidden" value="{{user.id}}">
+      <div class="user-email">이메일 주소: {{user.email}}</div>
+    {% endif %}
+</div>
+{% endblock %}
