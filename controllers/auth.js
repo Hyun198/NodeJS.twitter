@@ -1,5 +1,4 @@
 const bcrypt = require('bcrypt');
-const axios = require('axios');
 const passport = require('passport');
 const User = require('../models/user');
 

@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize');
+const { sequelize } =require('./user');
 
 class Post extends Sequelize.Model {
     static initiate(sequelize) {
@@ -14,7 +15,7 @@ class Post extends Sequelize.Model {
         },{
             sequelize,
             timestamps: true,
-            timestamps: false,
+            underscored: false,
             modelName: 'Post',
             tableName: 'posts',
             paranoid: false,
