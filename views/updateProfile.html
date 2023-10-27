@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="form-container">
+    <form id="login-form" action="/auth/update" method="post">
+        <h1 class="login-h1">Login</h1>
+        <span class="login-span">Update email , nickname , password</span>
+        <div class="input-group">
+            <label for="update-email">이메일</label>
+            <input id="update-email" type="email" name="email" required>
+        </div>
+        <div class="input-group">
+            <label for="update-nick">새 닉네임</label>
+            <input id="update-nick" type="text" name="nick" required>
+        </div>
+        <div class="input-group">
+            <label for="update-password">새 비밀번호</label>
+            <input id="update-password" type="password" name="password" required>
+        </div>
+        <button id="update-btn" type="submit" class="update-btn">수정</button>
+    </form>
+</div>
+{% endblock %}

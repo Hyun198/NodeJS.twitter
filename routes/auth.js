@@ -21,6 +21,8 @@ router.get('/kakao/callback', passport.authenticate('kakao',{
     res.redirect('/');
 });
 
+router.post('/update',isLoggedIn);
+
 
 
 module.exports = router;

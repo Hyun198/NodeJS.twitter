@@ -17,4 +17,4 @@ exports.uploadPost = async (req,res,next)=>{
         console.error(err);
         next(err);
     }
-};
+};  
