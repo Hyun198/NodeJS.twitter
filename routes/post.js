@@ -6,8 +6,6 @@ const { isLoggedIn } = require('../middlewares');
 const {afterUploadImage, uploadPost} = require('../controllers/post');
 const router = express.Router();
 
-router.get('/post')
-
 
 try{
     fs.readdirSync('uploads');
@@ -30,7 +28,7 @@ const upload = multer({
 });
 
 
-
+router.get('/post');
 router.post('/img', isLoggedIn, upload.single('img'), afterUploadImage);
 
 const upload2=multer();

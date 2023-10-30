@@ -31,3 +31,7 @@ exports.renderJoin=(req, res)=>{
 exports.renderUpdate_profile =(req, res)=>{
     res.render('updateProfile', {title: '내 정보 수정'});
 };
+
+exports.renderCreate_post = (req, res)=> {
+    res.render('uploadPost', {title: '게시글 작성'});
+}

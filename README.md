@@ -29,3 +29,5 @@ nodejs twitter clone and execute service
 ### 구현해야할것
 
     실시간 채팅, 프론트,   게시글 삭제, 사용자 이름 누르면 그 사용자의 게시글만 보여주기, 매번 데이터베이스 조회하지 않도록 deserializeUser 캐싱 , google-passport, 회원가입 시 이메일 인증
+
+    게시글 생성
