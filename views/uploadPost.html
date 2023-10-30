@@ -2,7 +2,18 @@
 
 {% block content %}
 
-게시글작성
+<!-- HTML Form for Posting -->
+<div class="form-container">
+    <form id="post-form" action="/create-post" method="POST" enctype="multipart/form-data">
+        <div class="input-group">
+            <label for="content">내용</label>
+            <input id="content" type="textarea" name="content" placeholder="게시글 내용">      
+        </div>
+        
+        <input type="file" name="image" accept="image/*">   
+        <button type="submit">게시</button>
+    </form> 
+</div>
 
 
 {% endblock %}

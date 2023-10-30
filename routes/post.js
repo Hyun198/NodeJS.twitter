@@ -28,8 +28,7 @@ const upload = multer({
 });
 
 
-router.get('/post');
-router.post('/img', isLoggedIn, upload.single('img'), afterUploadImage);
+router.post('/create-post', isLoggedIn,uploadPost,upload.single('img'),afterUploadImage);
 
 const upload2=multer();
 
