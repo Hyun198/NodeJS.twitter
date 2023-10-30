@@ -1,7 +1,7 @@
 const express = require('express');
 const { renderProfile, renderJoin, renderMain, renderLogin,renderUpdate_profile,renderCreate_post} = require('../controllers/page');
 const {isLoggedIn , isNotLoggedIn } = require('../middlewares');
-const { render } = require('nunjucks');
+
 
 const router = express.Router();
 
@@ -21,5 +21,7 @@ router.get('/',renderMain);
 router.get('/update', renderUpdate_profile, isLoggedIn);
 
 router.get('/post', renderCreate_post, isLoggedIn);
+
+
 
 module.exports = router;

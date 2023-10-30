@@ -12,7 +12,7 @@ exports.uploadPost = async (req,res,next)=>{
             img: req.body.url,
             UserId: req.user.id,
         });
-        
+        console.log(post);
         res.redirect('/');
     }catch (err){
         console.error(err);

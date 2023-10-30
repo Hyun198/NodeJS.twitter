@@ -28,12 +28,8 @@ const upload = multer({
 });
 
 
-router.post('/create-post', isLoggedIn,uploadPost,upload.single('img'),afterUploadImage);
 
-const upload2=multer();
-
-
-router.post('/', isLoggedIn, upload2.none(), uploadPost);
+router.post('/create', isLoggedIn, upload.single('img') ,uploadPost,  afterUploadImage);
 
 module.exports = router;
 
