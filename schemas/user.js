@@ -6,7 +6,6 @@ const userSchema = new Schema({
     email: {
         type: String,
         required: true,
-        unique: true,
     },
     nick: {
         type: String,
@@ -24,9 +23,9 @@ const userSchema = new Schema({
     },
     snsId: {
         type: String,
-        requried: true,
-    }
-
+        required: true,
+        default: 'local'
+    },
 }, { timestamps: true });
 
 module.exports = mongoose.model('User', userSchema);

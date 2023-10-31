@@ -1,5 +1,17 @@
 {% extends 'layout.html' %}
 
 {% block content %}
+<div class="post-container">
+    {% for post in posts %}
+    <div class="post">
+        <h2>{{ post.title }}</h2>
+        <p>{{ post.content }}</p>
+        <!-- 이미지 표시 -->
+        <img src="{{ post.img[0].data }}" alt="게시물 이미지" />
+        <p>작성자: {{ post.user.nick }}</p>
+        <p>작성일: {{ post.createdAt | date("YYYY-MM-DD HH:mm:ss") }}</p>
+    </div>
+    {% endfor %}
+</div>
 
 {% endblock %}

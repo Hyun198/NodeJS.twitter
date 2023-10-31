@@ -1,15 +1,15 @@
-const { Post } = require('../schemas/post');
+const Post = require('../schemas/post');
 
 exports.createPost = async (req, res, next) => {
-    const { title, content, imgUrl } = req.body;
-
+    const { title, content, image } = req.body;
     try {
-        const post = await Post.create({
+        const post = new Post({
             title,
             content,
-            img: imgUrl,
-            UserId: req.user.id,
+            img: [{ data: image, contentType: 'image/png' }],
+            user: req.user._id,
         });
+        await post.save();
 
         return res.redirect('/');
 

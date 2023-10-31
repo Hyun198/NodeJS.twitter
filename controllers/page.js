@@ -1,4 +1,4 @@
-const { User, Post } = require('../schemas');
+const Post = require('../schemas/post');
 
 exports.renderProfile = (req, res) => {
     res.render('profile', { title: '내 정보' });
@@ -7,9 +7,14 @@ exports.renderProfile = (req, res) => {
 exports.renderLogin = (req, res) => {
     res.render('login', { title: '로그인' });
 }
+
 exports.renderMain = async (req, res, next) => {
     try {
         const posts = await Post.find()
+            .populate('user', 'nick')
+            .sort({ createdAt: 'desc' })
+            .exec();
+        console.log(posts);
         res.render('main', { title: 'Node twitter', posts });
     } catch (err) {
         console.error(err);
