@@ -1,24 +1,20 @@
-const { Post } = require('../models/post');
+const { Post } = require('../schemas/post');
 
-exports.afterUploadImage = (req, res) => {
-    console.log(req.file);
-    res.json({ url: `/img/${req.file.filename}` });
-};
-
-exports.uploadPost = async (req, res, next) => {
-    const { title, content, img } = req.body;
-    const UserId = req.user.id; // 현재 로그인한 사용자의 ID
+exports.createPost = async (req, res, next) => {
+    const { title, content, imgUrl } = req.body;
 
     try {
         const post = await Post.create({
             title,
             content,
-            img,
-            UserId,
+            img: imgUrl,
+            UserId: req.user.id,
         });
-        res.status(201).json({ post });
-    } catch (err) {
-        console.error(err);
-        next(err);
+
+        return res.redirect('/');
+
+    } catch (error) {
+        console.error(error);
+        next(error);
     }
-};  
+};
