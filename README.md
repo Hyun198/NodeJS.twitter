@@ -1,9 +1,8 @@
 # NodeJS.twitter
-nodejs twitter clone and execute service 
 
+nodejs twitter clone and execute service
 
-## SQL 서버로 연결 (sequelize)
-
+## 몽고디비 연결 (mongoose)
 
 ## 구현 목표
 
@@ -11,11 +10,11 @@ nodejs twitter clone and execute service
 
 ### 현재 진행 내역
 
-    현재 데이터베이스 연결까지 (user, post)  로그인 구현(passport , kakao-passport) 
-    
+    현재 데이터베이스 연결까지 (user, post)  로그인 구현(passport , kakao-passport)
+
     (controller/auth/ join, login, logout) , model/user, passport/localstrategy. route/auth
 
-    localstrategy 완료 
+    localstrategy 완료
 
     post route 연결 완료
 
@@ -24,7 +23,6 @@ nodejs twitter clone and execute service
     프로필 페이지 완료
 
     kakao 로그인 완료 --> kakao api에서 로그아웃 하는 법 구현 중
-
 
 ### 구현해야할것
 
