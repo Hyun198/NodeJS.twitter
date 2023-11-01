@@ -9,12 +9,11 @@ const nunjucks = require('nunjucks');
 const rfs = require('rotating-file-stream');
 const dotenv = require('dotenv');
 const passport = require('passport');
-const multer = require('multer');
+
 const passportConfig = require('./passport');
 const conMongo = require('./schemas/index');
 
 dotenv.config();
-const upload = multer({ dest: 'public/uploads' }); // 업로드 폴더 설정
 const app = express();
 passportConfig();
 
@@ -53,7 +52,7 @@ app.use(morgan('common', {
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(upload.single('image'));
+
 
 app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use(session({

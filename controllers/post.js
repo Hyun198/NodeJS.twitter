@@ -1,27 +1,18 @@
-const { Post } = require('../schemas');
+const { Post } = require('../schemas/post');
 
-exports.uploadImage = async (req, res, next) => {
-    try {
-        const imgUrl = req.file.filename;
-        req.imgUrl = imgUrl;
-        next();
-    } catch (err) {
-        console.error(err);
-        next(err);
-    }
-}
+exports.afterUploadImage = (req, res) => {
+    console.log(req.file);
+    res.json({ url: `/img/${req.file.filename}` });
+};
 
 exports.createPost = async (req, res, next) => {
-    const { title, content } = req.body;
-    const user = req.user;
-    const imgUrl = req.file.filename;
-
     try {
+        const imgurl = `/img/${req.file.filename}`
         const newPost = new Post({
-            title,
-            content,
-            user: user._id,
-            imgUrl,
+            title: req.body.title,
+            content: req.body.content,
+            img: imgurl,
+            user: req.user._id,
         });
         await newPost.save();
         res.redirect('/');

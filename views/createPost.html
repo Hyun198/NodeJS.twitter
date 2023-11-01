@@ -3,7 +3,7 @@
 
 <!-- HTML Form for Posting -->
 <div class="form-container">
-    <form action="/post/create-post" method="POST">
+    <form action="/post/create-post" method="POST" enctype="multipart/form-data">
         <label for="title">제목:</label>
         <input type="text" name="title" id="title" required>
 
@@ -11,7 +11,7 @@
         <textarea name="content" id="content" required></textarea>
 
         <label for="image">이미지 업로드</label>
-        <input type="file" name="image" accept="image/*" />
+        <input type="file" name="img" accept="image/*" />
 
         <button type="submit">게시</button>
     </form>
