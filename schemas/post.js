@@ -18,6 +18,9 @@ const postSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User',
     },
+    imgUrl: {
+        type: String,
+    },
 }, { timestamps: true });
 
 

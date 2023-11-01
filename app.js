@@ -9,12 +9,12 @@ const nunjucks = require('nunjucks');
 const rfs = require('rotating-file-stream');
 const dotenv = require('dotenv');
 const passport = require('passport');
-
+const multer = require('multer');
 const passportConfig = require('./passport');
 const conMongo = require('./schemas/index');
 
 dotenv.config();
-
+const upload = multer({ dest: 'public/uploads' }); // 업로드 폴더 설정
 const app = express();
 passportConfig();
 
@@ -38,6 +38,7 @@ nunjucks.configure('views', { express: app, watch: true });
 conMongo();
 
 
+
 //에러만 콘솔에 출력
 app.use(morgan('dev', {
     skip: function (req, res) {
@@ -52,6 +53,8 @@ app.use(morgan('common', {
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(upload.single('image'));
+
 app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use(session({
     resave: false,
