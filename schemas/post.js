@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
-const { Schema } = mongoose;
 
-const postSchema = new Schema({
+const postSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true,
@@ -15,11 +14,12 @@ const postSchema = new Schema({
         default: Date.now,
     },
     user: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
     },
-    imgUrl: {
-        type: String,
+    img: {
+        data: Buffer,
+        contentType: String,
     },
 }, { timestamps: true });
 

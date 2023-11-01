@@ -16,7 +16,7 @@ nodejs twitter clone and execute service
 
     localstrategy 완료
 
-    post route 연결 완료
+    post route 연결 => multer를 이용한 이미지 업로드 중
 
     프로필 정보 변경 완료
 

@@ -11,7 +11,7 @@ const dotenv = require('dotenv');
 const passport = require('passport');
 
 const passportConfig = require('./passport');
-const conMongo = require('./schemas/index');
+const connectDB = require('./schemas/index');
 
 dotenv.config();
 const app = express();
@@ -34,7 +34,7 @@ app.set('view engine', 'html');
 nunjucks.configure('views', { express: app, watch: true });
 
 //mongodb연결
-conMongo();
+connectDB();
 
 
 
