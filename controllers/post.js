@@ -1,4 +1,5 @@
 const { Post } = require('../schemas/post');
+const fs = require('fs');
 
 exports.afterUploadImage = (req, res) => {
     console.log(req.file);
@@ -7,14 +8,19 @@ exports.afterUploadImage = (req, res) => {
 
 exports.createPost = async (req, res, next) => {
     try {
-        const imgurl = `/img/${req.file.filename}`
+        const imgPath = req.file.path;
+        const imgFileName = req.file.filename;
         const newPost = new Post({
             title: req.body.title,
             content: req.body.content,
-            img: imgurl,
+            img: {
+                data: fs.readFileSync(imgPath),
+                contentType: 'image/jpeg',
+            },
             user: req.user._id,
         });
         await newPost.save();
+        fs.unlinkSync(imgPath);
         res.redirect('/');
     } catch (error) {
         console.error(error);

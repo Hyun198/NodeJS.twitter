@@ -3,6 +3,7 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 
+
 const { isLoggedIn } = require('../middlewares');
 const { createPost } = require('../controllers/post');
 
@@ -30,16 +31,7 @@ const upload = multer({
 router.get('/create-post', isLoggedIn);
 
 
-router.post('/create-post', isLoggedIn, (req, res, next) => {
-    upload.single('img')(req, res, (err) => {
-        if (err) {
-            console.error('Multer error:', err);
-            next(err);
-        } else {
-            createPost(req, res, next);
-        }
-    });
-});
+router.post('/create-post', isLoggedIn, upload.single('img'), createPost);
 
 
 
