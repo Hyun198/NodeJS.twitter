@@ -3,5 +3,5 @@ config
 migrations
 seeders
 access.log
-env
+.env
 uploads
