@@ -23,8 +23,8 @@
 
 {% block script %}
 <script>
-    window.onload =() => {
-        if(new URL(location.href).searchParams.get('error')) {
+    window.onload = () => {
+        if (new URL(location.href).searchParams.get('error')) {
             alert('이미 존재하는 이메일 입니다.');
         }
     };

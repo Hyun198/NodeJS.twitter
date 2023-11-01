@@ -10,11 +10,7 @@ exports.renderLogin = (req, res) => {
 
 exports.renderMain = async (req, res, next) => {
     try {
-        const posts = await Post.find()
-            .populate('user', 'nick')
-            .sort({ createdAt: 'desc' })
-            .exec();
-        console.log(posts);
+        const posts = await Post.find().populate('user', 'nick').sort({ createdAt: 'desc' }).exec();
         res.render('main', { title: 'Node twitter', posts });
     } catch (err) {
         console.error(err);
@@ -32,5 +28,5 @@ exports.renderUpdate_profile = (req, res) => {
 };
 
 exports.renderCreate_post = (req, res) => {
-    res.render('uploadPost', { title: '게시글 작성' });
+    res.render('createPost', { title: '게시글 작성' });
 }

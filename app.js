@@ -23,6 +23,8 @@ const authRouter = require('./routes/auth');
 const postRouter = require('./routes/post');
 
 
+
+
 var accessLogStream = rfs.createStream('access.log', {
     interval: '1d', //하루마다 rotate
     path: path.join(__dirname, 'log')
