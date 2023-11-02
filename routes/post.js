@@ -1,9 +1,9 @@
 const express = require('express');
 const fs = require('fs');
-const multer = require('multer');
+
 const { isLoggedIn } = require('../middlewares/index');
-const upload = require('../middlewares/upload');
-const { createPost } = require('../controllers/post');
+
+const { create } = require('../controllers/post');
 
 const router = express.Router();
 
@@ -18,7 +18,7 @@ try {
 router.get('/create-post', isLoggedIn);
 
 
-router.post('/create-post', isLoggedIn, upload.single('img'), createPost);
+router.post('/create-post', isLoggedIn, create);
 
 
 module.exports = router;

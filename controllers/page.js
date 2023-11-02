@@ -9,8 +9,12 @@ exports.renderLogin = (req, res) => {
 }
 
 exports.renderMain = async (req, res, next) => {
+    console.log(Post);
     try {
-        const posts = await Post.find().populate('user', 'nick').sort({ createdAt: 'desc' }).exec();
+        const posts = await Post.find()
+            .populate('user', 'nick')
+            .sort({ createdAt: 'desc' })
+            .exec();
         res.render('main', { title: 'Node twitter', posts });
     } catch (err) {
         console.error(err);

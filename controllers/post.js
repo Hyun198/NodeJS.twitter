@@ -1,23 +1,19 @@
-const { Post } = require('../schemas/post');
-const fs = require('fs');
+const Post = require('../schemas/post');
 
-exports.createPost = async (req, res, next) => {
+
+
+exports.create = async (req, res, next) => {
+    console.log(Post);
+    const { title, content } = req.body;
+    console.log(title, content);
     try {
         const newPost = new Post({
-            title: req.body.title,
-            content: req.body.content,
+            title,
+            content,
             user: req.user._id,
         });
-
-
-        if (req.file) {
-            newPost.img.data = fs.readFileSync(req.file.path);
-            newPost.img.contentType = req.file.mimetype;
-        }
-
         await newPost.save();
-
-        res.redirect('/');
+        res.send('완료');
     } catch (error) {
         console.error(error);
         next(error);
